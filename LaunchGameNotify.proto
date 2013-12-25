@@ -1,0 +1,70 @@
+package com.skymobi.cac.ddz;
+
+option java_package = "com.skymobi.cac.ddz.xip";
+option java_outer_classname = "LaunchGameNotifyProtos";
+
+message LaunchGameNotify {
+
+  required int32 svrModId=1;
+  required int32 seatId=2;
+  required int32 tableId=3;
+  repeated PlayerInfo playerInfo=4;
+  optional string gameMsg=5;
+  optional string zoneMsg=6;
+  required int32 sysRewardGB=7;
+  
+  enum Gender{
+    female = 0;
+    male = 1;
+  }
+  
+  enum UserStatus{
+  	USER_STATUS_NOT_IN_SVR = 0;
+  	USER_STATUS_FREE = 1;
+  	USER_STATUS_SIT = 2;
+  	USER_STATUS_READY = 3;
+  	USER_STATUS_PLAYING = 4;
+  }
+
+	message SkillInfo{
+  	required int32 skillId=1;
+  	required int32 totalNum=2;
+  	required int32 availableNum=3;
+  	required int64 bgAvailableNum=4;
+  }
+  
+	message PetInfo{
+  	required int32 portraitId=1;
+  	required string nickName=2;
+  	repeated SkillInfo skillInfo=3;
+  	required int32 skillTotalNum=4;
+  	required int32 isOnline=5;
+  	required int32 clothesPropId=6;
+  }
+  
+ 
+  message PlayerInfo{
+  	required int64 skyId=1;
+    required string nickName=2;
+    required Gender gender =3 [default = male];
+    required int32 portraitId=4;
+    required int64 money=5;
+    required bytes hasCardHelper=6;
+    required int64 yb=7;
+    required int32 level=8;
+    required int32 exp=9;
+    required int32 effortExp=10;
+    required int32 gap=11;
+    required int32 seatId=12;
+    required UserStatus status=13 [default = USER_STATUS_NOT_IN_SVR];
+    required int32 winRound=14;
+    required int32 loseRound=15;
+    required int32 escapeRound=16;
+    required int32 disconnRound=17;
+    required int32 payStatus=18;
+    optional string expression=19;
+    repeated PetInfo pets=20;
+  }
+  
+
+}
